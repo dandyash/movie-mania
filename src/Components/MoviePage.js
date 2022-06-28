@@ -50,7 +50,6 @@ const MoviePage = () => {
                             </div>
                             <div className='movie_detailes_flex'>
                                 <h1 className='movie_title'>{movie.title} <span>( {release_year} )</span></h1>
-                                <h4></h4>
                                 <div className='genre_container'>
                                     {genres.slice(0, 5).map(genre => <Link className='genre' to="/" key={genre.id}>{genre.name}</Link>)}
                                 </div>
