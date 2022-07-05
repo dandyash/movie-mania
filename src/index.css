@@ -171,20 +171,21 @@
   box-sizing: border-box;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-  height: 0px;
-  position: absolute;
-  right: 0%;
+*:focus {
+  outline: none;
 }
 
-::-webkit-scrollbar-track {
-  position: absolute;
-  right: 0%;
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #ff4057;
+  background-color: rgb(255, 64, 87, 0.5);
   border-radius: 10px;
 }
 
@@ -210,12 +211,11 @@ body {
 }
 
 header {
-  padding: 10px 0px;
   position: fixed;
   top: 0%;
   left: 0%;
   right: 0%;
-  z-index: 999;
+  z-index: 9;
   transition: all 0.5s;
 }
 
@@ -224,13 +224,14 @@ header {
 }
 
 .header_dark {
-  background-color: #262626;
+  background-color: #000;
 }
 
 .header_flex_container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 10px 0px;
 }
 
 .logo_container {
@@ -249,6 +250,57 @@ header {
   padding: 10px 20px;
 }
 
+.search_btn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.search_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+
+.search_container form {
+  width: 100%;
+  position: relative;
+  margin: 20px 0px;
+}
+
+.search_container input[type="text"] {
+  font-size: 18px;
+  padding: 10px;
+  width: 100%;
+}
+
+.search_container input[type="submit"] {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  font-size: 18px;
+  padding: 12px 20px;
+  border: none;
+  color: white;
+  background-color: #ff4057;
+  cursor: pointer;
+}
+
+.search_section {
+  padding-top: 100px;
+}
+
+.search_container_flex {
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+}
+
 .loader_container {
   position: fixed;
   top: 0%;
@@ -260,6 +312,26 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.pagination_container {
+  padding-top: 20px;
+}
+
+.pagination_flex {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.red_btn:disabled {
+  border-color: rgb(255, 64, 87, 0.5);
+  color: rgb(255, 64, 87, 0.5);
+}
+
+.red_btn:disabled:hover {
+  background-color: transparent;
+  color: rgb(255, 64, 87, 0.5);
 }
 
 .loader {
@@ -383,6 +455,7 @@ header {
   gap: 20px;
   overflow-x: auto;
   padding-right: 50px;
+  padding-bottom: 5px;
 }
 
 .movie_row_container::after {
@@ -455,7 +528,7 @@ header {
 }
 
 .movie_hero_backdrop_container {
-  width: 100vw;
+  width: 100%;
   height: 85vh;
   overflow-y: auto;
   overflow-x: hidden;
@@ -494,33 +567,369 @@ header {
   gap: 25px;
 }
 
+.movie_title_flex {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.movie_title {
+  font-size: 42px;
+  font-weight: 600;
+}
+
 .movie_title>span {
   font-weight: 400;
+}
+
+.movie_tagline {
+  font-weight: 500;
+  font-style: italic;
+  color: rgb(255, 255, 255, 0.7);
+}
+
+.movie_buttons_flex {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .genre_container {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px;
+  align-items: center;
 }
 
 .genre {
   border: 1px solid #ff4057;
   color: #ff4057;
-  padding: 5px 10px;
+  padding: 3px 6px;
   font-size: 14px;
   transition: all 0.3s;
 }
 
 .genre:hover {
   background-color: #ff4057;
+  color: black;
+}
+
+.red_btn {
+  border: 2px solid #ff4057;
+  width: fit-content;
+  padding: 10px 20px;
+  color: #ff4057;
+  transition: all 0.3s;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: capitalize;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.red_btn:hover {
+  background-color: #ff4057;
   color: white;
+}
+
+.red_btn.active {
+  background-color: #ff4057;
+  color: white;
+}
+
+.movie_overview_flex {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.runtime_flex {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.movie_cast_container {
+  padding-top: 50px;
+}
+
+.movie_cast_row {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+}
+
+.movie_cast_flex_container {
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+  overflow-x: auto;
+  padding-right: 50px;
+  padding-bottom: 5px;
+}
+
+.movie_cast_flex_container::after {
+  content: "";
+  width: 50px;
+  position: absolute;
+  top: 59px;
+  right: 0;
+  bottom: 0px;
+  background-image: linear-gradient(to left, #262626, transparent);
+  will-change: opacity;
+  pointer-events: none;
+}
+
+.movie_cast_card {
+  display: flex;
+  flex-direction: column;
+  color: #000;
+}
+
+.movie_cast_card>img {
+  max-width: unset;
+}
+
+.movie_cast_details {
+  background-color: #ff4057;
+  flex-grow: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal_overlay {
+  position: fixed;
+  top: 0%;
+  bottom: 0%;
+  left: 0%;
+  right: 0%;
+  background-color: rgb(0, 0, 0, 0.5);
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s;
+}
+
+.close_modal {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
 }
 
 .youtube_container {
   width: 100%;
+  min-width: 75vw;
   height: auto;
   aspect-ratio: 1.75;
+}
+
+.belongs_to_collection_container {
+  padding-top: 50px;
+}
+
+.collection_info_container {
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 300px;
+}
+
+.collection_gradient {
+  position: absolute;
+  padding: 50px;
+  top: 0%;
+  bottom: 0%;
+  left: 0%;
+  right: 0%;
+  background-image: linear-gradient(to right, #000, #000, rgb(0, 0, 0, 0.5), transparent);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 20px;
+}
+
+.collection_gradient h2 {
+  color: white;
+  font-size: 30px;
+}
+
+.current_season_container {
+  padding-top: 50px;
+}
+
+.current_season_flex {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.current_season {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: dimgray;
+}
+
+.current_season_info {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0px 20px;
+}
+
+.episodes_container {
+  padding-top: 50px;
+}
+
+.seasons_overview_container {
+  padding-top: 50px;
+}
+
+.seasons_overview_flex {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.seasons_row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+}
+
+.season_card img {
+  max-width: unset;
+}
+
+.images_container {
+  padding-top: 50px;
+}
+
+.images_flex_container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.images_tab_container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.images_container_header {
+  display: flex;
+  align-items: flex-end;
+  gap: 50px;
+}
+
+.images_tab {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.images_tab button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  padding-bottom: 3px;
+  cursor: pointer;
+  border-bottom: 4px solid transparent;
+  transition: all 0.5s;
+}
+
+.images_tab button::after {
+  position: absolute;
+  content: "";
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #ff4057;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s;
+}
+
+.images_tab button:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.images_tab button.active {
+  border-color: #ff4057;
+}
+
+.images_body {
+  align-items: center;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+}
+
+.resized_img {
+  width: 32%;
+  object-fit: contain;
+}
+
+footer {
+  background-color: #000;
+  color: white;
+  margin-top: 50px;
+  padding: 50px 0px 20px 0px;
+}
+
+.footer_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+.footer_flex {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.footer_left_section {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer_left_section>img {
+  width: 20%;
+}
+
+.footer_right_section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.copyright a {
+  color: #ff4057;
+  font-weight: 700;
 }
 
 /* Main Css Ends */

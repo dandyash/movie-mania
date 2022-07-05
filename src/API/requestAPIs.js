@@ -1,10 +1,10 @@
-const API_KEY = "032f0bbdf8a95e629c1a2e2c338a448b";
+const API_KEY = "";
 
 const API_LIST = {
 
     // fetchImage: "https://image.tmdb.org/t/p/",
 
-    // fetch Poster Images of Diff Sizes
+    // fetch Images of Diff Sizes
     fetchPosterImageW92: "https://image.tmdb.org/t/p/w92",
     fetchPosterImageW154: "https://image.tmdb.org/t/p/w154",
     fetchPosterImageW185: "https://image.tmdb.org/t/p/w185",
@@ -21,22 +21,18 @@ const API_LIST = {
     fetchPopularMovies: "/movie/popular?api_key=" + API_KEY + "&language=en-US",
     fetchTopRatedMovies: "/movie/top_rated?api_key=" + API_KEY + "&language=en-US",
     fetchUpcomingMovies: "/movie/upcoming?api_key=" + API_KEY + "&language=en-US",
-    fetchSimilarMovies: "/similar?api_key=" + API_KEY + "&language=en-US",
     fetchAllTrending: "/trending/all/day?api_key=" + API_KEY,
     fetchDayTrendingMovies: "/trending/movie/day?api_key=" + API_KEY,
     fetchWeekTrendingMovies: "/trending/movie/week?api_key=" + API_KEY,
     fetchDayTrendingTv: "/trending/tv/day?api_key=" + API_KEY,
-    fetchMovieByGenre: "/discover/movie?api_key=" + API_KEY + "&language=en-US&sort_by=popularity.desc&with_genres=",
-    fetchTvByGenre: "/discover/tv?api_key=" + API_KEY + "&language=en-US&sort_by=popularity.desc&with_genres=",
+    fetchMovieByGenre: "/discover/movie?api_key=" + API_KEY + "&sort_by=popularity.desc&with_genres=",
+    fetchTvByGenre: "/discover/tv?api_key=" + API_KEY + "&sort_by=popularity.desc&with_genres=",
     fetchWeekTrendingTv: "/trending/tv/week?api_key=" + API_KEY,
-    searchMovie: "/search/movie?api_key=" + API_KEY + "&language=en-US&page=1&query=",
+    searchQuery: "/search/multi?api_key=" + API_KEY + "&query=",
     fetchAiringTodayTV: "/tv/airing_today?api_key=" + API_KEY + "&language=en-US&page=1",
     fetchOnAirTV: "/tv/on_the_air?api_key=" + API_KEY + "&language=en-US&page=1",
     fetchPopularTV: "/tv/popular?api_key=" + API_KEY + "&language=en-US&page=1",
     fetchTopRatedTV: "/tv/top_rated?api_key=" + API_KEY + "&language=en-US&page=1",
-    fetchMovieProviders: "watch/providers/movie?api_key=" + API_KEY + "&language=en-US",
-    fetchTvProviders: "watch/providers/tv?api_key=" + API_KEY + "&language=en-US",
-    fetchCast: "/credits?api_key=" + API_KEY + "&language=en-US"
 }
 
 export { API_KEY };

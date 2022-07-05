@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import MovieCarousel from './MovieCarousel';
 import MoviesRow from './MoviesRow'
 import API_LIST from '../API/requestAPIs';
 
 const Home = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
         <>
             <MovieCarousel fetchAPI={API_LIST.fetchAllTrending} />

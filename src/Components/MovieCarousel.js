@@ -14,10 +14,10 @@ const MovieCarousel = ({ fetchAPI }) => {
         const fetchData = async () => {
             const response = await axios_instance.get(fetchAPI);
             if (response.status) {
+                setMovies(response.data.results);
                 setTimeout(() => {
                     setIsLoaded(true);
                 }, 800);
-                setMovies(response.data.results);
             }
         }
         fetchData();
