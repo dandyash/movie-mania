@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
 import axios_instance from '../API/axios';
