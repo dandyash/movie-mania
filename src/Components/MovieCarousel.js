@@ -2,23 +2,22 @@ import React, { useEffect, useState } from 'react'
 import axios_instance from '../API/axios';
 import Slider from 'react-slick';
 import CarouselItem from './CarouselItem';
-import LoadingSpinner from './LoadingSpinner';
+import usePageLoader from './../Hooks/usePageLoader';
 
 const MovieCarousel = ({ fetchAPI }) => {
 
-    const [isLoaded, setIsLoaded] = useState(false);
-
     const [movies, setMovies] = useState([]);
+    const [loader, showLoader, hideLoader] = usePageLoader();
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios_instance.get(fetchAPI);
-            if (response.status) {
-                setMovies(response.data.results);
-                setTimeout(() => {
-                    setIsLoaded(true);
-                }, 800);
-            }
+            showLoader();
+            await axios_instance.get(fetchAPI)
+                .then(response => {
+                    setMovies(response.data.results);
+                    hideLoader();
+                }
+                );
         }
         fetchData();
     }, [fetchAPI]);
@@ -34,14 +33,16 @@ const MovieCarousel = ({ fetchAPI }) => {
     };
 
     return (
-        <div className='movie_carousel'>
-            {isLoaded ? "" : <LoadingSpinner />}
-            <Slider {...settings}>
-                {
-                    movies.map(movie => <CarouselItem movie={movie} key={movie.id} />)
-                }
-            </Slider>
-        </div>
+        <>
+            {loader}
+            <div className='movie_carousel' >
+                <Slider {...settings}>
+                    {
+                        movies.map(movie => <CarouselItem movie={movie} key={movie.id} />)
+                    }
+                </Slider>
+            </div>
+        </>
     )
 }
 

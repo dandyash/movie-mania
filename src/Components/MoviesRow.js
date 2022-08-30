@@ -9,12 +9,13 @@ const MoviesRow = ({ title, fetchAPI }) => {
     useEffect(() => {
 
         const fetchData = async () => {
-            const response = await axios_instance.get(fetchAPI);
-            setMovies(response.data.results);
+            await axios_instance.get(fetchAPI)
+                .then(response => {
+                    setMovies(response.data.results);
+                });
         }
         fetchData();
     }, [fetchAPI]);
-
 
     return (
         <div className='movie_row_main_container'>
