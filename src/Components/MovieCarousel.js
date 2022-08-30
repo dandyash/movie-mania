@@ -20,6 +20,7 @@ const MovieCarousel = ({ fetchAPI }) => {
                 );
         }
         fetchData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [fetchAPI]);
 
     var settings = {
